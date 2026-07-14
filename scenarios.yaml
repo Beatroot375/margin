@@ -1,0 +1,36 @@
+# Stress-test scenarios applied to a base position.
+# price_shock_pct: adverse move as decimal (-0.10 = -10% for a long position)
+# margin_*_rate_multiplier: venue widens requirements under stress
+
+scenarios:
+  - name: baseline
+    description: No shock — verify base margins
+
+  - name: price_drop_5pct
+    description: Adverse 5% price move
+    price_shock_pct: -0.05
+
+  - name: price_drop_10pct
+    description: Adverse 10% price move
+    price_shock_pct: -0.10
+
+  - name: price_drop_20pct
+    description: Adverse 20% price move (flash crash)
+    price_shock_pct: -0.20
+
+  - name: price_rally_10pct
+    description: Favorable 10% move — margin should not increase
+    price_shock_pct: 0.10
+
+  - name: price_rally_20pct
+    description: Favorable 20% move — margin should not increase
+    price_shock_pct: 0.20
+
+  - name: price_rally_30pct
+    description: Favorable 30% move — margin should not increase
+    price_shock_pct: 0.30
+
+  - name: black_swan
+    description: -30% price, leverage 1x
+    price_shock_pct: -0.3
+    leverage: 1

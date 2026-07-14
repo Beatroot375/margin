@@ -1,0 +1,20 @@
+# Example margin testing configuration.
+# Copy to config.toml and adjust for your instrument.
+
+[position]
+notional = 1_000_000        # position notional in quote currency
+currency = "USD"
+asset_class = "margin_approved_stock"
+price = 25                  # required for price-band asset classes
+
+[account]
+model = "standard"          # "standard" (broker) or "leveraged" (exchange)
+leverage = 10               # only affects leveraged model
+collateral = 100_000        # equity posted; defaults to initial margin if omitted
+
+[margin_rates]
+init = 0.50                 # set explicitly, or leave unset in code to use asset-class defaults
+maint = 0.25                # margin-approved stocks above $3.00 follow 50% / 25%
+
+[scenarios_file]
+path = "margin_testing/scenarios.yaml"
