@@ -201,6 +201,16 @@ if "result" in st.session_state:
     with col4:
         st.metric("Model", f"{result.model.value} ({result.leverage}x)")
     
+    # Placeholder metrics for day trade buying power and cash balance
+    st.subheader("Account Statistics")
+    col5, col6 = st.columns(2)
+    
+    with col5:
+        st.metric("Day Trade Buying Power", "--")
+    
+    with col6:
+        st.metric("Cash Balance", "--")
+    
     # Additional details
     with st.expander("Margin Details"):
         st.json({
